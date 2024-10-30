@@ -37,6 +37,8 @@ public class OrdersCommandService {
         this.factoryMap = new HashMap<>();
 
         Map<String, PaymentFactory> beans = applicationContext.getBeansOfType(PaymentFactory.class);
+        log.info(beans.values() + " OrdersCommandService");
+
         for (PaymentFactory factory : beans.values()) {
             factoryMap.put(factory.getPaymentType(), factory);
         }

@@ -12,8 +12,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 import study.dev.designpatterpractice.orders.constants.OrdersConstants;
+import study.dev.designpatterpractice.orders.model.dto.FetchOrderList;
 import study.dev.designpatterpractice.orders.model.dto.OrderRequest;
 import study.dev.designpatterpractice.orders.model.vo.OrderResponse;
+import study.dev.designpatterpractice.orders.service.OrderQueryService;
 import study.dev.designpatterpractice.orders.service.OrdersCommandService;
 import study.dev.designpatterpractice.user.constants.UserConstants;
 import study.dev.designpatterpractice.user.entity.User;
@@ -29,6 +31,7 @@ import java.util.List;
 public class OrdersController {
 
     private final OrdersCommandService ordersCommandService;
+    private final OrderQueryService orderQueryService;
 
 
     @PostMapping("/order")
@@ -40,5 +43,12 @@ public class OrdersController {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(new OrderResponse(OrdersConstants.STATUS_201, OrdersConstants.MESSAGE_201));
+    }
+
+    @GetMapping("/my_order")
+    public ResponseEntity<List<FetchOrderList>> fetchOrders(@UserInfo User user) {
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(orderQueryService.getMyOrders(user));
     }
 }

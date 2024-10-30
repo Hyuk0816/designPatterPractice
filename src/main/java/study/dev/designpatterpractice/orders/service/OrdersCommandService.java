@@ -50,7 +50,7 @@ public class OrdersCommandService {
             Product product = productRepository.findByProductId(orderRequest.getProductId());
 
             //총 가격 계산
-            Integer totalPrice = product.getAmount() * product.getPrice();
+            Integer totalPrice = orderRequest.getAmount() * product.getPrice();
 
             // Orders
             Orders orders = Orders.builder()

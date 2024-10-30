@@ -32,7 +32,7 @@ public class OrdersController {
 
 
     @PostMapping("/order")
-    public ResponseEntity<OrderResponse> createOrder(@RequestBody List<OrderRequest> orderRequests, @Parameter(hidden = true) @UserInfo User user) {
+    public ResponseEntity<OrderResponse> createOrder(@RequestBody List<OrderRequest> orderRequests, @UserInfo User user) {
 
         log.info(user.getEmail() + " createOrder");
 

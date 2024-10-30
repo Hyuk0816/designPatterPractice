@@ -22,7 +22,6 @@ public class UserDetailsRequestVo {
     @Schema(description = "User's password", example = "password123")
     private String password;
 
-    private String  role;
 
 
 }

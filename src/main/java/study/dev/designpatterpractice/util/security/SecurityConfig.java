@@ -64,13 +64,10 @@ public class SecurityConfig implements WebMvcConfigurer {
                 .authorizeHttpRequests((authorize)->
                         authorize
                                 .requestMatchers(BASIC_LIST).permitAll()
-                                .requestMatchers("/api/user/**", "/api/auth/login","api/product/name/**" ,"/api/product/update/**",
+                                .requestMatchers("/api/user/**", "/api/auth/login",
                                         "/api/product/all","/api/auth/logout","/api/auth/accessToken",
-                                        "/docs", "/swagger-ui/**", "/dev/**", "/v3/**", "/actuator/**",
-                                        "/api/ipo/data/**", "/api/listing_shares/monthly_profit", "/api/listing_shares/data/**", "/api/listing_shares/most_expensive", "/api/listing_shares//valuable_listing").permitAll()
-                                .requestMatchers("/api/auth/**", "/api/ipo/**", "/api/s3/**", "/api/alarm/**").authenticated()
-                                .requestMatchers("api/product/**","/api/listData/get", "/api/mypage/**", "/api/ipo_detail/**",
-                                        "/api/listing_shares/**", "/api/ipo_comments/**", "/api/listing_share_alarm/**").authenticated())
+                                        "/docs", "/swagger-ui/**", "/dev/**", "/v3/**").permitAll()
+                                .requestMatchers("/api/auth/**", "/api/orders/**").authenticated())
                 .addFilterAt(new AuthoritiesLoggingAtFilter(),BasicAuthenticationFilter.class)
                 .addFilterAfter(new AuthoritiesLoggingAfterFilter(), BasicAuthenticationFilter.class)
                 .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);

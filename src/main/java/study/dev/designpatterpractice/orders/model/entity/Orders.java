@@ -1,7 +1,9 @@
-package study.dev.designpatterpractice.order.model;
+package study.dev.designpatterpractice.orders.model.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import study.dev.designpatterpractice.product.model.entity.Product;
@@ -11,6 +13,7 @@ import study.dev.designpatterpractice.user.entity.User;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@Builder(toBuilder = true)
 @Table(name = "orders")
 public class Orders {
 
@@ -34,6 +37,7 @@ public class Orders {
     private Product product;
 
     @Column(name = "payment")
+    @NotEmpty
     private String payment;
 
 

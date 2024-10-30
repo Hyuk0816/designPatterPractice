@@ -63,12 +63,8 @@ public class AuthServiceImpl implements AuthService {
 
             tokenProvider.createRefreshTokenCookie(response, "refreshToken", refreshToken, maxAgeForCookie);
 
-            response.sendRedirect("/");
-
         }catch(BadCredentialsException e){
             throw new BadCredentialsException(AuthConstants.MESSAGE_401);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
     }
 

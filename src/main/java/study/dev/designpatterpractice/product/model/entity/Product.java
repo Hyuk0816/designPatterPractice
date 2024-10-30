@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import study.dev.designpatterpractice.order.model.Orders;
+import study.dev.designpatterpractice.orders.model.entity.Orders;
 
 import java.util.List;
 

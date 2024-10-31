@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface OrdersRepository extends JpaRepository<Orders, Long> {
 
-    @Query("select o from Orders o join fetch o.user u where u.userId = :userId")
+    @Query("select o from Orders o join fetch o.user u join fetch o.product where u.userId = :userId")
     List<Orders> findByUserId(Long userId);
 
 }

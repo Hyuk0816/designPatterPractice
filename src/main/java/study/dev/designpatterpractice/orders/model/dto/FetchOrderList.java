@@ -6,12 +6,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class FetchOrderList {
 
     private Long orderId;
+    private String productName;
     private Integer amount;
     private Integer totalPrice;
     private String payment;

@@ -13,6 +13,7 @@ public class OrdersMapper {
         return orders.stream()
                 .map(order -> new FetchOrderList(
                         order.getOrderId(),
+                        order.getProduct().getProductName(),
                         order.getAmount(),
                         order.getTotalPrice(),
                         order.getPayment()

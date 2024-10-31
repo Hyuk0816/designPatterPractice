@@ -69,6 +69,8 @@ public class OrdersCommandService {
             //페이먼트 실행
             PaymentFactory paymentFactory = factoryMap.get(orderRequest.getPayment());
             PaymentGateWay paymentGateWay = paymentFactory.createPaymentGateWay();
+            log.info("=============================================================");
+            log.info(String.valueOf(paymentFactory));
             paymentGateWay.processPayment(orders);
         });
     }
